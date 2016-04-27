@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="appKeyword">
+<head>
+    <title>Generador de Keywords by Anexsoft</title>
+    <link rel="stylesheet" href="asset/bootstrap.min.css" />
+    
+		<link rel="shortcut icon" href="http://anexsoft.com/assets/frontend/images/favicon.ico" />
+
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	    <meta charset="utf-8" />
+ 		<meta name="description" content="Blog informático de PHP, ASP.NET MVC, jQuery, javascript, HTML 5, CSS 3, etc con los mejores tutoriales de tecnología y dictados de cursos online." />
+        <meta name="theme-color" content="#222" />
+
+        <meta property="og:image" content="http://anexsoft.com/assets/frontend/images/logo.png"/>        
+        <meta property="og:title" content="Anexsoft" />        
+        <meta property="og:url" content="http://anexsoft.com/keyword"/>        
+        <meta property="og:site_name" content="Generador de Keywords"/>
+        <meta property="og:description" content="Un simple gnerador de keywords que te ahorrará tiempo."/>        
+        <meta property="fb:app_id" content="320080904930" />
+    
+    <meta charset="utf-8" />
+</head>
+<body>
+
+    <div class="container" ng-controller="keywordCtrl">
+        <div class="row">
+            <div class="col-xs-12">
+                
+                <h1 class="page-header">
+                    Generador de Keywords <small>by <b><a href="http://anexsoft.com" target="_blank">Anexsoft</a></b></small>
+                </h1>
+                
+                <div class="jumbotron text-justify">
+                    <p>Es un <b>generador de Keywords</b> bastante sencillo, la idea es ingresar <b>palabras claves</b> y el algoritmo te hará toda las <b>combinaciones posibles</b> para evitar tener que hacerlo a mano.</p>
+                    <p>Dale click algun de los enlaces de abajo para darte una idea como usar el script.</p>
+                    <ul>
+                        <li><a href="#" ng-click="example(1)">Tengo un video mio tocando un tema de Dragon Ball Z</a></li>
+                        <li><a href="#" ng-click="example(2)">Saqué un nuevo tutorial de Laravel 5</a></li>
+                        <li><a href="#" ng-click="example(3)">Como entrenar a mi perro para que cague fuera de la casa</a></li>
+                    </ul>
+                </div>
+                
+                <!-- KEYWORD CONTROLS -->
+                <h3 class="page-header">
+                    Planifica tus palabras claves
+                </h3>
+                <form>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <textarea rows="10" class="form-control" ng-model="keyword1"></textarea>
+                        </div>
+                        <div class="col-sm-4">
+                            <textarea rows="10" class="form-control" ng-model="keyword2"></textarea>
+                        </div>
+                        <div class="col-sm-4">
+                            <textarea rows="10" class="form-control" ng-model="keyword3"></textarea>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <button ng-click="doIt()" class="btn btn-default btn-lg btn-block" type="submit">
+                        Generar
+                    </button>
+                </form>
+                
+                <hr />
+                
+                <!-- KEYWORD RESULT -->
+                <div ng-if="keyword != null">
+                    <h3 class="page-header">
+                        Resultado
+                    </h3>
+                    <textarea onclick="this.select();" rows="4" class="form-control" readonly ng-model="result"></textarea>
+                    <hr />
+                    <ul class="list-group">
+                        <li ng-repeat="r in keyword" class="list-group-item">
+                            {{ r }}
+                        </li>
+                        <li class="list-group-item disabled text-center">{{ count }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="asset/angular.js"></script>
+    <script src="keywordCtrl.js"></script>
+</body>
+</html>
